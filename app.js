@@ -10,7 +10,7 @@ var config = {
   // - For your faucet to work, you must register your site at Recaptcha
   // - https://www.google.com/recaptcha/intro/index.html
   recaptcha_sitekey: '6LfI_QUTAAAAACrjjuzmLw0Cjx9uABxb8uguLbph',  // <----- EDIT ME!
-  redirect_uri: 'https://betsme.github.io/',
+  redirect_uri: 'https://BetsME.github.io/app.js/',
   mp_browser_uri: 'https://www.moneypot.com',
   mp_api_uri: 'https://api.moneypot.com',
   chat_uri: '//socket.moneypot.com',
@@ -35,7 +35,7 @@ var config = {
 (function() {
   var errString;
 
-  if (config.house_edge <= 0.01) {
+  if (config.house_edge <= 0.0) {
     errString = 'House edge must be > 0.01 (0.9%)';
   } else if (config.house_edge >= 100.0) {
     errString = 'House edge must be < 1.0 (100%)';
