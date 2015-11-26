@@ -1266,10 +1266,12 @@ var BetBoxWager = React.createClass({
   },
   _onHalveWager: function() {
     var newWager = Math.round(betStore.state.wager.num * 50) / 100;
+    console.log('new wager: ('+newWager+')');
     Dispatcher.sendAction('UPDATE_WAGER', { str: newWager.toString() });
   },
   _onDoubleWager: function() {
     var n = Math.round(betStore.state.wager.num * 200) / 100;
+    console.log('new wager: ('+n+')');
     Dispatcher.sendAction('UPDATE_WAGER', { str: n.toString() });
 
   },
