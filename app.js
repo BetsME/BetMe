@@ -500,7 +500,7 @@ var betStore = new Store('bet', {
     // Ensure wagerString is a number
     if (isNaN(n) || /^-?\d+((.\d)?\d*(e[-]?\d)?(\d)*)$/.test(n.toString())) { // - /[^\d]/.test(n.toString())) {
       self.state.wager.error = 'INVALID_WAGER';
-      self.state.wager.error = n.toString();
+      //self.state.wager.error = n.toString();
     // Ensure user can afford balance
     } else if (n * 100 > worldStore.state.user.balance) {
       self.state.wager.error = 'CANNOT_AFFORD_WAGER';
