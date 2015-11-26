@@ -23,6 +23,7 @@ var config = {
   //   Must be between 0.0 (0%) and 1.0 (100%)
   house_edge: 0.1,
   chat_buffer_size: 250,
+  min_bet: 0.01;
   // - The amount of bets to show on screen in each tab
   bet_buffer_size: 25
 };
@@ -467,8 +468,8 @@ var chatStore = new Store('chat', {
 var betStore = new Store('bet', {
   nextHash: undefined,
   wager: {
-    str: '0.01',
-    num: 0.01,
+    str: config.min_bet.toString(),
+    num: config.min_bet,
     error: undefined
   },
   multiplier: {
@@ -492,13 +493,14 @@ var betStore = new Store('bet', {
 
     // If n is a number, ensure it's at least 1 bit
     if (isFinite(n)) {
-      n = Math.max(n, 0.01);
+      n = Math.max(n, config.min_bet);
       self.state.wager.str = n.toString();
     }
 
     // Ensure wagerString is a number
     if (isNaN(n) || /[^\d]/.test(n.toString())) {
       self.state.wager.error = 'INVALID_WAGER';
+      self.state.wager.error = n.toString();
     // Ensure user can afford balance
     } else if (n * 100 > worldStore.state.user.balance) {
       self.state.wager.error = 'CANNOT_AFFORD_WAGER';
@@ -2340,7 +2342,7 @@ $(document).on('keydown', function(e) {
       });
       break;
     case X:  // Decrease wager
-      var downWager = Math.floor(betStore.state.wager.num / 2);
+      var downWager = Math.max(betStore.state.wager.num / 2, config.min_bet);
       Dispatcher.sendAction('UPDATE_WAGER', {
         num: downWager,
         str: downWager.toString()
