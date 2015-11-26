@@ -493,7 +493,7 @@ var betStore = new Store('bet', {
 
     // If n is a number, ensure it's at least 1 bit
     if (isFinite(n)) {
-      n = Math.max(n, config.min_bet);
+      n = Math.max(n*100, config.min_bet*100)/100;
       self.state.wager.str = n.toString();
     }
 
