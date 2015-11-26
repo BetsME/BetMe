@@ -495,11 +495,13 @@ var betStore = new Store('bet', {
     if (isFinite(n)) {
       n = Math.max(n*100, config.min_bet*100)/100;
       self.state.wager.str = n.toString();
+      console.log(self.state.wager.str);
     }
 
     // Ensure wagerString is a number
     if (isNaN(n) || /^-{0,1}\d*\.{0,1}\d+$/.test(n.toString())) { // - /[^\d]/.test(n.toString())) {
       self.state.wager.error = 'INVALID_WAGER';
+      console.log(n);
       //self.state.wager.error = n.toString();
     // Ensure user can afford balance
     } else if (n * 100 > worldStore.state.user.balance) {
@@ -2336,6 +2338,7 @@ $(document).on('keydown', function(e) {
   switch(keyCode) {
     case C:  // Increase wager
       var upWager = betStore.state.wager.num * 2;
+      console.log('new wager: ('+upWager+')');
       Dispatcher.sendAction('UPDATE_WAGER', {
         num: upWager,
         str: upWager.toString()
@@ -2343,6 +2346,7 @@ $(document).on('keydown', function(e) {
       break;
     case X:  // Decrease wager
       var downWager = Math.max(betStore.state.wager.num / 2, config.min_bet);
+      console.log('new wager: ('+downWager+')');
       Dispatcher.sendAction('UPDATE_WAGER', {
         num: downWager,
         str: downWager.toString()
