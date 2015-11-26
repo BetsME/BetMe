@@ -1290,7 +1290,10 @@ var BetBoxWager = React.createClass({
     var style1 = { borderBottomLeftRadius: '0', borderBottomRightRadius: '0' };
     var style2 = { borderTopLeftRadius: '0' };
     var style3 = { borderTopRightRadius: '0' };
-  var vlderr = if(betStore.state.wager.error) betStore.state.wager.error else '';
+    var vlderr = "";
+    if (betStore.state.wager.error) {
+      vlderr = betStore.state.wager.error
+    };
     return el.div(
       {className: 'form-group'},
       el.p(
