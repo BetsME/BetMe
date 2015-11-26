@@ -2347,6 +2347,7 @@ $(document).on('keydown', function(e) {
     case X:  // Decrease wager
       var downWager = Math.max(betStore.state.wager.num * 50, config.min_bet * 100) / 100;
       console.log('new wager: ('+downWager+')');
+      window.alert('Hi World!');
       Dispatcher.sendAction('UPDATE_WAGER', {
         num: downWager,
         str: downWager.toString()
