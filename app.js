@@ -1469,7 +1469,7 @@ var BetBoxButton = React.createClass({
         {type: 'button',
          disabled: true,
          className: 'btn btn-lg btn-block btn-danger'},
-        errorTranslations[error] || 'Invalid bet'
+        errorTranslations[error] || error || 'Invalid bet'
       );
     } else if (worldStore.state.user) {
       // If user is logged in, let them submit bet
