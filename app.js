@@ -1263,7 +1263,7 @@ var BetBoxWager = React.createClass({
     Dispatcher.sendAction('UPDATE_WAGER', { str: str });
   },
   _onHalveWager: function() {
-    var newWager = Math.round(betStore.state.wager.num / 2);
+    var newWager = Math.round(betStore.state.wager.num * 50) / 100;
     Dispatcher.sendAction('UPDATE_WAGER', { str: newWager.toString() });
   },
   _onDoubleWager: function() {
@@ -1275,7 +1275,7 @@ var BetBoxWager = React.createClass({
     // If user is logged in, use their balance as max wager
     var balanceBits;
     if (worldStore.state.user) {
-      balanceBits = Math.floor(worldStore.state.user.balance / 100);
+      balanceBits = Math.floor(worldStore.state.user.balance) / 100;
     } else {
       balanceBits = 42000;
     }
