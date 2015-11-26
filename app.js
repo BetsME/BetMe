@@ -499,7 +499,7 @@ var betStore = new Store('bet', {
     }
 
     // Ensure wagerString is a number
-    if (isNaN(n) || /^-{0,1}\d*\.{0,1}\d+$/.test(n.toString())) { // - /[^\d]/.test(n.toString())) {
+    if (isNaN(n) || !/^-{0,1}\d*\.{0,1}\d+$/.test(n.toString())) { // - /[^\d]/.test(n.toString())) {
       self.state.wager.error = 'INVALID_WAGER';
       console.log('There is error and the '+n+' isNAN='+isNaN(n)+'; and RegeX.test='+/^-{0,1}\d*\.{0,1}\d+$/.test(n.toString()));
       //self.state.wager.error = n.toString();
