@@ -1267,7 +1267,7 @@ var BetBoxWager = React.createClass({
     Dispatcher.sendAction('UPDATE_WAGER', { str: newWager.toString() });
   },
   _onDoubleWager: function() {
-    var n = betStore.state.wager.num * 2;
+    var n = Math.round(betStore.state.wager.num * 200) / 100;
     Dispatcher.sendAction('UPDATE_WAGER', { str: n.toString() });
 
   },
