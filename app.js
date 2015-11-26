@@ -2337,7 +2337,7 @@ $(document).on('keydown', function(e) {
 
   switch(keyCode) {
     case C:  // Increase wager
-      var upWager = betStore.state.wager.num * 2;
+      var upWager = Math.max(betStore.state.wager.num * 200) / 100;
       console.log('new wager: ('+upWager+')');
       Dispatcher.sendAction('UPDATE_WAGER', {
         num: upWager,
@@ -2345,7 +2345,7 @@ $(document).on('keydown', function(e) {
       });
       break;
     case X:  // Decrease wager
-      var downWager = Math.max(betStore.state.wager.num / 2, config.min_bet);
+      var downWager = Math.max(betStore.state.wager.num * 50, config.min_bet * 100) / 100;
       console.log('new wager: ('+downWager+')');
       Dispatcher.sendAction('UPDATE_WAGER', {
         num: downWager,
