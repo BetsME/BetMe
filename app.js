@@ -23,7 +23,7 @@ var config = {
   //   Must be between 0.0 (0%) and 1.0 (100%)
   house_edge: 0.1,
   chat_buffer_size: 250,
-  min_bet: 0.01;
+  min_bet: 0.01,
   // - The amount of bets to show on screen in each tab
   bet_buffer_size: 25
 };
