@@ -36,7 +36,7 @@ var config = {
   var errString;
 
   if (config.house_edge <= 0.0) {
-    errString = 'House edge must be > 0.01 (0.9%)';
+    errString = 'House edge must be > 0.0 (0.0%)';
   } else if (config.house_edge >= 100.0) {
     errString = 'House edge must be < 1.0 (100%)';
   }
