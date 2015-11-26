@@ -506,7 +506,7 @@ var betStore = new Store('bet', {
     // Ensure user can afford balance
     } else if (n * 100 > worldStore.state.user.balance) {
       self.state.wager.error = 'CANNOT_AFFORD_WAGER';
-      self.state.wager.num = n;
+      self.state.wager.num = worldStore.state.user.balance / 100;
     } else {
       // wagerString is valid
       self.state.wager.error = null;
