@@ -495,13 +495,13 @@ var betStore = new Store('bet', {
     if (isFinite(n)) {
       n = Math.max(n*100, config.min_bet*100)/100;
       self.state.wager.str = n.toString();
-      console.log(self.state.wager.str);
+      console.log('isFinite and is set to: '+self.state.wager.str);
     }
 
     // Ensure wagerString is a number
     if (isNaN(n) || /^-{0,1}\d*\.{0,1}\d+$/.test(n.toString())) { // - /[^\d]/.test(n.toString())) {
       self.state.wager.error = 'INVALID_WAGER';
-      console.log(n);
+      console.log('There is error and the '+n+' isNAN='+isNaN(n)+'; and RegeX.test='+/^-{0,1}\d*\.{0,1}\d+$/.test(n.toString()));
       //self.state.wager.error = n.toString();
     // Ensure user can afford balance
     } else if (n * 100 > worldStore.state.user.balance) {
